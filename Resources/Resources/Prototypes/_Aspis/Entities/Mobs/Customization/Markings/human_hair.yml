@@ -1,0 +1,7 @@
+- type: marking
+  id: HumanHairShortCurls
+  bodyPart: Hair
+  markingCategory: Hair
+  sprites:
+    - sprite: _Aspis/Mobs/Customization/human_hair.rsi
+      state: shortCurls
