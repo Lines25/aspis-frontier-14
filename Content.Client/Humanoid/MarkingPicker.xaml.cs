@@ -11,6 +11,7 @@ using Robust.Client.Utility;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using static Robust.Client.UserInterface.Controls.BoxContainer;
+using Robust.Client.Player; // Aspis ckey for restricted players
 
 namespace Content.Client.Humanoid;
 
@@ -20,6 +21,7 @@ public sealed partial class MarkingPicker : Control
     [Dependency] private readonly MarkingManager _markingManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private readonly IPlayerManager _playerManager = default!; // Aspis ckey for restricted players
 
     private readonly SpriteSystem _sprite;
 
@@ -204,9 +206,10 @@ public sealed partial class MarkingPicker : Control
 
     private IReadOnlyDictionary<string, MarkingPrototype> GetMarkings(MarkingCategories category)
     {
+        var ckey = _playerManager.LocalSession?.Name; // Aspis ckey for restricted players
         return IgnoreSpecies
-            ? _markingManager.MarkingsByCategoryAndSex(category, _currentSex)
-            : _markingManager.MarkingsByCategoryAndSpeciesAndSex(category, _currentSpecies, _currentSex);
+            ? _markingManager.MarkingsByCategoryAndSex(category, _currentSex, ckey) // Aspis ckey for restricted players
+            : _markingManager.MarkingsByCategoryAndSpeciesAndSex(category, _currentSpecies, _currentSex, ckey); // Aspis ckey for restricted players
     }
 
     public void Populate(string filter)

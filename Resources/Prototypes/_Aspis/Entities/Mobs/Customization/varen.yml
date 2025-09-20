@@ -1,0 +1,23 @@
+# Волосся
+- type: marking
+  id: VarenHairSusie
+  bodyPart: Hair
+  markingCategory: Hair
+  speciesRestriction: [Vulpkanin]
+  playerRestriction: [Vareniko]
+  sprites:
+  - sprite: _Aspis/Mobs/Customization/varen/hair.rsi
+    state: susieHair
+
+# Хвостики
+- type: marking
+  id: VulpFanTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Vulpkanin]
+  playerRestriction: [Vareniko]
+  sprites:
+  - sprite: _Aspis/Mobs/Customization/varen/tail_fan.rsi
+    state: tail_fan_wag
+  - sprite: _Aspis/Mobs/Customization/varen/tail_fan.rsi
+    state: tail_fan_wag-tip

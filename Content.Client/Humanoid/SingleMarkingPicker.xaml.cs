@@ -5,6 +5,7 @@ using Robust.Client.GameObjects;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Client.Utility;
+using Robust.Client.Player; // Aspis ckey for restricted players
 
 namespace Content.Client.Humanoid;
 
@@ -13,6 +14,7 @@ public sealed partial class SingleMarkingPicker : BoxContainer
 {
     [Dependency] private readonly MarkingManager _markingManager = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private readonly IPlayerManager _playerManager = default!; // Aspis ckey for restricted players
 
     private readonly SpriteSystem _sprite;
     
@@ -156,7 +158,8 @@ public sealed partial class SingleMarkingPicker : BoxContainer
         _species = species;
         _totalPoints = totalPoints;
 
-        _markingPrototypeCache = _markingManager.MarkingsByCategoryAndSpecies(Category, _species);
+        var ckey = _playerManager.LocalSession?.Name; // Aspis ckey for restricted players
+        _markingPrototypeCache = _markingManager.MarkingsByCategoryAndSpecies(Category, _species, ckey); // Aspis ckey for restricted players
 
         Visible = _markingPrototypeCache.Count != 0;
         if (_markingPrototypeCache.Count == 0)
@@ -176,7 +179,8 @@ public sealed partial class SingleMarkingPicker : BoxContainer
             throw new ArgumentException("Tried to populate marking list without a set species!");
         }
 
-        _markingPrototypeCache ??= _markingManager.MarkingsByCategoryAndSpecies(Category, _species);
+        var ckey = _playerManager.LocalSession?.Name; // Aspis ckey for restricted players
+        _markingPrototypeCache ??= _markingManager.MarkingsByCategoryAndSpecies(Category, _species, ckey); // Aspis ckey for restricted players
 
         MarkingSelectorContainer.Visible = _markings != null && _markings.Count != 0;
         if (_markings == null || _markings.Count == 0)

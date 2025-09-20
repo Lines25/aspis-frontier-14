@@ -316,7 +316,8 @@ namespace Content.Client.Lobby.UI
                 if (Profile is null)
                     return;
 
-                var hair = _markingManager.MarkingsByCategoryAndSpecies(MarkingCategories.Hair, Profile.Species).Keys
+                var ckey = _playerManager.LocalSession?.Name; // Aspis ckey for restricted players
+                var hair = _markingManager.MarkingsByCategoryAndSpecies(MarkingCategories.Hair, Profile.Species, ckey).Keys // Aspis ckey for restricted players
                     .FirstOrDefault();
 
                 if (string.IsNullOrEmpty(hair))
@@ -336,7 +337,8 @@ namespace Content.Client.Lobby.UI
                 if (Profile is null)
                     return;
 
-                var hair = _markingManager.MarkingsByCategoryAndSpecies(MarkingCategories.FacialHair, Profile.Species).Keys
+                var ckey = _playerManager.LocalSession?.Name; // Aspis ckey for restricted players
+                var hair = _markingManager.MarkingsByCategoryAndSpecies(MarkingCategories.Hair, Profile.Species, ckey).Keys // Aspis ckey for restricted players
                     .FirstOrDefault();
 
                 if (string.IsNullOrEmpty(hair))
