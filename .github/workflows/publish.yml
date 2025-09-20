@@ -43,12 +43,6 @@ jobs:
     - name: Package client
       run: dotnet run --project Content.Packaging client --no-wipe-release
 
-    - name: Publish version
-      run: Tools/publish_multi_request.py
-      env:
-        PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
-        GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }}
-
     # - name: Publish changelog (Discord)
     #   continue-on-error: true
     #   run: Tools/actions_changelogs_since_last_run.py
@@ -56,8 +50,8 @@ jobs:
     #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     #     DISCORD_WEBHOOK_URL: ${{ secrets.CHANGELOG_DISCORD_WEBHOOK }}
 
-    - name: Publish changelog (RSS)
-      continue-on-error: true
-      run: Tools/actions_changelog_rss.py
-      env:
-        CHANGELOG_RSS_KEY: ${{ secrets.CHANGELOG_RSS_KEY }}
+    # - name: Publish changelog (RSS)
+    #   continue-on-error: true
+    #   run: Tools/actions_changelog_rss.py
+    #   env:
+    #     CHANGELOG_RSS_KEY: ${{ secrets.CHANGELOG_RSS_KEY }}
