@@ -1,0 +1,12 @@
+mail-metrics-program-name = ПоштоМетрик
+mail-metrics-header = Дохід від доставки пошти
+mail-metrics-opened = Прибуток (Відкрито)
+mail-metrics-expired = Втрати (Простроковано)
+mail-metrics-damaged = Втрати (Пошкоджено)
+mail-metrics-tampered = Losses (Tampered)
+mail-metrics-unopened = Не відкрито
+mail-metrics-count-header = Пакунки
+mail-metrics-money-header = Спесо
+mail-metrics-total = Загалом
+mail-metrics-progress = {$opened} з {$total} пакунків відкрито!
+mail-metrics-progress-percent = Рейтинг успішності: {$successRate}%
